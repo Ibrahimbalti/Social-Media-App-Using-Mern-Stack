@@ -1,4 +1,4 @@
 {
-    "mongoUrl":"mongodb+srv://Ibrahim:Ibrahimkhan0348@socialmediaapp.2dtxe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    "mongoUrl":"mongodb+srv://Ibrahim:Ibrahimkhan0348@socialmediaapp.2dtxe.mongodb.net/socialmediaapp?retryWrites=true&w=majority"
     
 }
