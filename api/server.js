@@ -9,7 +9,7 @@ const helmet = require('helmet');
 connectDB();
 
 //Init Middleware
-app.use(express.json());
+app.use(express.json({ extended: false }));
 app.use(helmet());
 app.use(morgan('common'));
 
