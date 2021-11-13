@@ -44,6 +44,18 @@ router.delete('/:id', async (req, res) => {
 });
 
 //get user
+
+router.get('/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    const { password, updateAt, ...other } = user._doc;
+    res.status(200).json(other);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server error');
+  }
+});
+
 // followers user
 // unfollow user
 
