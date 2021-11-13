@@ -8,22 +8,21 @@ const bcryptjs = require('bcryptjs');
 
 // Register Users
 router.post('/register', async (req, res) => {
-  const { username, email, password } = req.body;
-  // salt use for to more secure your passowrd
-  const salt = await bcryptjs.genSalt(10);
-  // create a hash password ...to more secure your password if any access the data base they can not get the plane password
-  const hashpassword = await bcryptjs.hash(password, salt);
-  const newUsers = new User({
-    username,
-    email,
-    password: hashpassword,
-  });
-
   try {
+    // salt use for to more secure your passowrd
+    const salt = await bcryptjs.genSalt(10);
+    // create a hash password ...to more secure your password if any access the data base they can not get the plane password
+    const hashpassword = await bcryptjs.hash(req.body.password, salt);
+
+    const newUsers = new User({
+      username: req.body.username,
+      email: req.body.email,
+      password: hashpassword,
+    });
     const user = await newUsers.save();
     res.status(200).json(user);
   } catch (err) {
-    console.error(erro.message);
+    console.error(err.message);
     res.status(500).send('server error');
   }
 });
