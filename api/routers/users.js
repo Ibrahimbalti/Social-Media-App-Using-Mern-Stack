@@ -1,7 +1,15 @@
 const express = require('express');
 const router = express.Router();
-router.get('/', (req, res) => {
-  res.send('welcome to user');
-});
+const User=require('../models/User')
+//update user
+router.put('/:id',(req,res)=>{
+if(req.body.userId===req.params.id || req.body.isAdmin){
 
-module.exports = router;
+}
+})
+//delete user
+//get user
+// followers user
+// unfollow user
+
+module.exports = router
