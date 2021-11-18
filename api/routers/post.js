@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
+const User = require('../models/User');
+const USer = require('../models/User');
 
 //create post
 router.post('/', async (req, res) => {
@@ -65,5 +67,24 @@ router.get('/:id', async (req, res) => {
   }
 });
 //get timeline post
+router.get('/timeline/all', async (req, res) => {
+  try {
+    // this current user who login
+    const currentUser = await User.findById(req.body.userId);
+    // find the database and check the post userId  is equall to current user id
+    // Is ma ya check kr rah ha jo post is na khud kiya hvo ha
+    const userPost = await Post.find({ userId: currentUser._id });
+    // check the friend id who following the users
+    const friendPost = await Promise.all(
+      currentUser.followings.map((friendId) => {
+        return Post.find({ userId: friendId });
+      })
+    );
+    //use concat and show all post by user and itself
+    res.status(200).json(userPost.concat(...friendPost));
+  } catch (error) {
+    res.satatus(500).json('Server Error');
+  }
+});
 
 module.exports = router;
