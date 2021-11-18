@@ -7,3 +7,19 @@
   top: 0;
   display: flex;
 }
+
+.topbarleft {
+  flex: 3;
+}
+.topbarcenter {
+  flex: 5;
+}
+
+.topbarright {
+  flex: 4;
+}
+
+.topbarimg {
+  width: 32px;
+  height: 32px;
+}
