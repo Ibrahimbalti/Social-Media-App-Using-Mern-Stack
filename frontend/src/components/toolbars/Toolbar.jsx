@@ -1,6 +1,6 @@
 import React from 'react';
 import './topbar.css';
-import {Search,Person,Chat,Notifications,Message} from "@material-ui/icons"
+import {Search,Person,Chat,Notifications} from "@material-ui/icons"
 
 const Toolbar = () => {
   return (
@@ -13,8 +13,10 @@ const Toolbar = () => {
 
        {/* ........................Center Left......................... */}
       <div className="topbarcenter">
-        <Search/>
+    <div className="searchbar">
+    <Search className="searchbaricon"/>
         <input type="text" placeholder="Search friend videos and photos" className="searchinput"/>
+      </div>
       </div>
 
 
@@ -25,19 +27,19 @@ const Toolbar = () => {
         <span className="topbarlink">Timelines</span>
       </div>
       <div className="topbarIcons">
-        <div className="topbarIconsItems">
+        <div className="topbariconitem">
           <Person/>
-          <span className="topbarIconBadges">1</span>
+          <span className="topbarIconBadge">1</span>
         </div>
 
-        <div className="topbarIconsItems">
+        <div className="topbariconitem">
           <Chat/>
-          <span className="topbarIconBadges">1</span>
+          <span className="topbarIconBadge">1</span>
         </div>
 
-        <div className="topbarIconsItems">
+        <div className="topbariconitem">
           <Notifications/>
-          <span className="topbarIconBadges">1</span>
+          <span className="topbarIconBadge">1</span>
         </div>
       </div>
       <img src="/assets/person/1.jpeg" alt="" className="topbarimg" />
