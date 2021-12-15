@@ -1,8 +1,11 @@
 import React from 'react'
 import './post.css'
 import {MoreVert} from '@material-ui/icons'
-const Post = () => {
+import { Users } from '../../dummyData'
+const Post = ({post}) => {
+    
     return (
+        
         <div className="post">
             <div className="postWrapper">
                 {/* ..................Post Top................. */}
@@ -10,8 +13,8 @@ const Post = () => {
                      {/* ..................Post Left................. */}
                     <div className="postLeft">
                         <img src="/assets/person/1.jpeg" alt="Post Profile" className="postProfileImg" />
-                        <span className="postUsername">Nawaz Sermiki</span>
-                        <span className="postDate">5 minut ago</span>
+                        <span className="postUsername">{Users.filter(u=>u.id === post.userId)[0].username}</span>
+                        <span className="postDate">{post.date}</span>
                     </div>
 
                      {/* ..................Post Right................. */}
@@ -22,8 +25,8 @@ const Post = () => {
 
                 {/* ..................Post Center................. */}
                 <div className="postCenter">
-                    <span className="postText">Hi ! This is my first post :)</span>
-                    <img src="/assets/post/1.jpeg" alt="Post Img" className="postImg" />
+                    <span className="postText">{post?.dsc}</span>
+                    <img src={post.photo} alt="Post Img" className="postImg" />
                 </div>
 
                 {/* ..................Post  Bottom................. */}
@@ -33,11 +36,11 @@ const Post = () => {
 <div className="postBottomLeft">
     <img src="/assets/like.png" alt="Like" className="likeIcon" />
     <img src="/assets/heart.png" alt="Like" className="likeIcon" />
-    <span className="postLikeCounter">32 people like it</span>
+    <span className="postLikeCounter">{post.like} people like it</span>
 </div>
                       {/* ..................Post  Bottom  Right................. */}
                       <div className="postBottomRight">
-                          <span className="postCommentText">9 comments</span>
+                          <span className="postCommentText">{post.comment} comment</span>
                       </div>
                 </div>
             </div>
